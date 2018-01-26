@@ -41,101 +41,150 @@ namespace XamarinOne
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050001
+			public const int dark = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int darkest = 2131034112;
+			
+			// aapt resource value: 0x7f050003
+			public const int light = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int lightest = 2131034116;
+			
+			// aapt resource value: 0x7f050002
+			public const int neutral = 2131034114;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int button1 = 2131034114;
+			// aapt resource value: 0x7f070002
+			public const int Bin = 2131165186;
 			
-			// aapt resource value: 0x7f05000c
-			public const int button10 = 2131034124;
+			// aapt resource value: 0x7f070004
+			public const int Dec = 2131165188;
 			
-			// aapt resource value: 0x7f05000e
-			public const int button11 = 2131034126;
+			// aapt resource value: 0x7f070006
+			public const int Hex = 2131165190;
 			
-			// aapt resource value: 0x7f05000f
-			public const int button12 = 2131034127;
+			// aapt resource value: 0x7f070009
+			public const int button1 = 2131165193;
 			
-			// aapt resource value: 0x7f050010
-			public const int button13 = 2131034128;
+			// aapt resource value: 0x7f070013
+			public const int button10 = 2131165203;
 			
-			// aapt resource value: 0x7f050011
-			public const int button14 = 2131034129;
+			// aapt resource value: 0x7f070015
+			public const int button11 = 2131165205;
 			
-			// aapt resource value: 0x7f050012
-			public const int button15 = 2131034130;
+			// aapt resource value: 0x7f070016
+			public const int button12 = 2131165206;
 			
-			// aapt resource value: 0x7f050014
-			public const int button16 = 2131034132;
+			// aapt resource value: 0x7f070017
+			public const int button13 = 2131165207;
 			
-			// aapt resource value: 0x7f050015
-			public const int button17 = 2131034133;
+			// aapt resource value: 0x7f070018
+			public const int button14 = 2131165208;
 			
-			// aapt resource value: 0x7f050016
-			public const int button18 = 2131034134;
+			// aapt resource value: 0x7f070019
+			public const int button15 = 2131165209;
 			
-			// aapt resource value: 0x7f050017
-			public const int button19 = 2131034135;
+			// aapt resource value: 0x7f07001b
+			public const int button16 = 2131165211;
 			
-			// aapt resource value: 0x7f050003
-			public const int button2 = 2131034115;
+			// aapt resource value: 0x7f07001c
+			public const int button17 = 2131165212;
 			
-			// aapt resource value: 0x7f050018
-			public const int button20 = 2131034136;
+			// aapt resource value: 0x7f07001d
+			public const int button18 = 2131165213;
 			
-			// aapt resource value: 0x7f05001a
-			public const int button21 = 2131034138;
+			// aapt resource value: 0x7f07001e
+			public const int button19 = 2131165214;
 			
-			// aapt resource value: 0x7f05001b
-			public const int button22 = 2131034139;
+			// aapt resource value: 0x7f07000a
+			public const int button2 = 2131165194;
 			
-			// aapt resource value: 0x7f05001c
-			public const int button23 = 2131034140;
+			// aapt resource value: 0x7f07001f
+			public const int button20 = 2131165215;
 			
-			// aapt resource value: 0x7f05001d
-			public const int button24 = 2131034141;
+			// aapt resource value: 0x7f070021
+			public const int button21 = 2131165217;
 			
-			// aapt resource value: 0x7f05001e
-			public const int button25 = 2131034142;
+			// aapt resource value: 0x7f070022
+			public const int button22 = 2131165218;
 			
-			// aapt resource value: 0x7f050004
-			public const int button3 = 2131034116;
+			// aapt resource value: 0x7f070023
+			public const int button23 = 2131165219;
 			
-			// aapt resource value: 0x7f050005
-			public const int button4 = 2131034117;
+			// aapt resource value: 0x7f070024
+			public const int button24 = 2131165220;
 			
-			// aapt resource value: 0x7f050006
-			public const int button5 = 2131034118;
+			// aapt resource value: 0x7f070025
+			public const int button25 = 2131165221;
 			
-			// aapt resource value: 0x7f050008
-			public const int button6 = 2131034120;
+			// aapt resource value: 0x7f07000b
+			public const int button3 = 2131165195;
 			
-			// aapt resource value: 0x7f050009
-			public const int button7 = 2131034121;
+			// aapt resource value: 0x7f07000c
+			public const int button4 = 2131165196;
 			
-			// aapt resource value: 0x7f05000a
-			public const int button8 = 2131034122;
+			// aapt resource value: 0x7f07000d
+			public const int button5 = 2131165197;
 			
-			// aapt resource value: 0x7f05000b
-			public const int button9 = 2131034123;
+			// aapt resource value: 0x7f07000f
+			public const int button6 = 2131165199;
 			
-			// aapt resource value: 0x7f050000
-			public const int tableLayout1 = 2131034112;
+			// aapt resource value: 0x7f070010
+			public const int button7 = 2131165200;
 			
-			// aapt resource value: 0x7f050001
-			public const int tableRow1 = 2131034113;
+			// aapt resource value: 0x7f070011
+			public const int button8 = 2131165201;
 			
-			// aapt resource value: 0x7f050007
-			public const int tableRow2 = 2131034119;
+			// aapt resource value: 0x7f070012
+			public const int button9 = 2131165202;
 			
-			// aapt resource value: 0x7f05000d
-			public const int tableRow3 = 2131034125;
+			// aapt resource value: 0x7f070001
+			public const int buttonA = 2131165185;
 			
-			// aapt resource value: 0x7f050013
-			public const int tableRow4 = 2131034131;
+			// aapt resource value: 0x7f070003
+			public const int buttonB = 2131165187;
 			
-			// aapt resource value: 0x7f050019
-			public const int tableRow5 = 2131034137;
+			// aapt resource value: 0x7f070005
+			public const int buttonC = 2131165189;
+			
+			// aapt resource value: 0x7f070000
+			public const int relativeLayout1 = 2131165184;
+			
+			// aapt resource value: 0x7f070007
+			public const int tableLayout1 = 2131165191;
+			
+			// aapt resource value: 0x7f070008
+			public const int tableRow1 = 2131165192;
+			
+			// aapt resource value: 0x7f07000e
+			public const int tableRow2 = 2131165198;
+			
+			// aapt resource value: 0x7f070014
+			public const int tableRow3 = 2131165204;
+			
+			// aapt resource value: 0x7f07001a
+			public const int tableRow4 = 2131165210;
+			
+			// aapt resource value: 0x7f070020
+			public const int tableRow5 = 2131165216;
 			
 			static Id()
 			{
@@ -194,6 +243,22 @@ namespace XamarinOne
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int AppTheme = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
