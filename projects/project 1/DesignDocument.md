@@ -1,8 +1,8 @@
-# APPLICATION NAME
-Complete description and overview.  This is where you describe in a brief, yet clear and concise, manner what your product should do and how you expect it should be used.  Why did you write this application?  What purpose does it serve?  It's okay if the only purpose is to meet the homework requirement (but try to move bedyond just that - be creative!).
+# PROGRAMMING CALCULATOR
+This application was designed to fill the gaping hole in my heart that would be filled by a decent programming calculator app for android phones. Works seamlessly in displaying hex and bin values of output alongside a base 10 decimal form. Input for binary and hexidecimal strings allowed. Instant conversions. Operators work under all three modes.
 
 ## System Design 
-This is where you specify all of the system's requirements.  This section should accurately portray the complete operation of your application.  Provide scenarios, use cases, system requirements, and diagrams/screenshots of the system.
+This can be used as a base for a more complex calculator app, short of adding features already implemented. Limited to 32 bit signed integers. No OCT mode.
 
 ## Usage
-This is where you explain how to use your application
+Open the application and gaze upon its majestic interface. Use like you would any calculator by typing in values, one by one, punctuated by operators and equal signs. All normal functions of a calculator exist as well as functionality regarding Hex and Bin conversions.
