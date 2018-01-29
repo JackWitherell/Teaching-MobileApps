@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace XamarinOne
 {
-    [Activity(Label = "PostFix Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Programming Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity{
         
         private Vibrator myVib;
@@ -99,6 +99,10 @@ namespace XamarinOne
             Button buttonPlus       = FindViewById<Button>(Resource.Id.button23);
             Button buttonMinus      = FindViewById<Button>(Resource.Id.button24);
             Button buttonEquals     = FindViewById<Button>(Resource.Id.button25);
+            Button buttonBIN        = FindViewById<Button>(Resource.Id.buttonA);
+            Button buttonDEC        = FindViewById<Button>(Resource.Id.buttonB);
+            Button buttonHEX        = FindViewById<Button>(Resource.Id.buttonC);
+
             buttonCE.Click         += delegate {
                 myVib.Vibrate(30);
                 if(memheld){
@@ -156,7 +160,7 @@ namespace XamarinOne
                     sign="DIV";
                 }
             };
-            buttonBackspace.Click  += delegate { //TODO Set Number Size Limit, Implement the Mode Buttons, Implement Orientation Change
+            buttonBackspace.Click  += delegate {
                 myVib.Vibrate(30);
                 if(mode!="BIN"){
                     if(memheld){
@@ -265,8 +269,54 @@ namespace XamarinOne
                     }
                 }
             };
-            buttonA.Click          += delegate { myVib.Vibrate(30); };
-            buttonB.Click          += delegate { myVib.Vibrate(30); };
+            buttonA.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=10;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=10;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
+            buttonB.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=11;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=11;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
             button4.Click          += delegate {
                 if(mode!="BIN"){
                     myVib.Vibrate(30);
@@ -345,8 +395,54 @@ namespace XamarinOne
                     }
                 }
             };
-            buttonC.Click          += delegate { myVib.Vibrate(30); };
-            buttonD.Click          += delegate { myVib.Vibrate(30); };
+            buttonC.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=12;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=12;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
+            buttonD.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=13;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=13;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
             button1.Click          += delegate {
                 myVib.Vibrate(30);
                 
@@ -440,8 +536,54 @@ namespace XamarinOne
                     }
                 }
             };
-            buttonE.Click          += delegate { myVib.Vibrate(30); };
-            buttonF.Click          += delegate { myVib.Vibrate(30); };
+            buttonE.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=14;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=14;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
+            buttonF.Click          += delegate {
+                if(newb){
+                    valueTwo=0;
+                    sign="NUL";
+                }
+
+                if(mode=="HEX"){
+                    myVib.Vibrate(30);
+                    if(memheld){
+                        valueTwo*=16;
+                        valueTwo+=15;
+                        lBin.Text = ToBinaryString(valueTwo);
+                        lDec.Text = valueTwo.ToString();
+                        lHex.Text = valueTwo.ToString("X");
+                    }
+                    else{
+                        valueOne*=16;
+                        valueOne+=15;
+                        lBin.Text = ToBinaryString(valueOne);
+                        lDec.Text = valueOne.ToString();
+                        lHex.Text = valueOne.ToString("X");
+                    }
+                }
+            };
             button0.Click          += delegate {
                 myVib.Vibrate(30);
                 if(memheld){
@@ -522,48 +664,49 @@ namespace XamarinOne
             };
             buttonEquals.Click     += delegate {
                 if(sign=="ADD"){
-                    if(mode=="DEC"){
-                        valueOne+=valueTwo;
-                        memheld=false;
-                        lBin.Text = ToBinaryString(valueOne);
-                        lDec.Text = valueOne.ToString();
-                        lHex.Text = valueOne.ToString("X");
-                        newb=true;
-                    }
+                    valueOne+=valueTwo;
+                    memheld=false;
+                    lBin.Text = ToBinaryString(valueOne);
+                    lDec.Text = valueOne.ToString();
+                    lHex.Text = valueOne.ToString("X");
+                    newb=true;
                 }
                 else if(sign=="SUB"){
-                    if(mode=="DEC"){
-                        valueOne-=valueTwo;
-                        memheld=false;
-                        lBin.Text = ToBinaryString(valueOne);
-                        lDec.Text = valueOne.ToString();
-                        lHex.Text = valueOne.ToString("X");
-                        newb=true;
-                    }
+                    valueOne-=valueTwo;
+                    memheld=false;
+                    lBin.Text = ToBinaryString(valueOne);
+                    lDec.Text = valueOne.ToString();
+                    lHex.Text = valueOne.ToString("X");
+                    newb=true;
                 }
                 else if(sign=="MUL"){
-                    if(mode=="DEC"){
-                        valueOne*=valueTwo;
-                        memheld=false;
-                        lBin.Text = ToBinaryString(valueOne);
-                        lDec.Text = valueOne.ToString();
-                        lHex.Text = valueOne.ToString("X");
-                        newb=true;
-                    }
+                    valueOne*=valueTwo;
+                    memheld=false;
+                    lBin.Text = ToBinaryString(valueOne);
+                    lDec.Text = valueOne.ToString();
+                    lHex.Text = valueOne.ToString("X");
+                    newb=true;
                 }
                 else if(sign=="DIV"){
-                    if(mode=="DEC"){
-                        valueOne/=valueTwo;
-                        memheld=false;
-                        lBin.Text = ToBinaryString(valueOne);
-                        lDec.Text = valueOne.ToString();
-                        lHex.Text = valueOne.ToString("X");
-                        newb=true;
-                    }
+                    valueOne/=valueTwo;
+                    memheld=false;
+                    lBin.Text = ToBinaryString(valueOne);
+                    lDec.Text = valueOne.ToString();
+                    lHex.Text = valueOne.ToString("X");
+                    newb=true;
                 }
                 else if(sign=="NUL"){
 
                 }
+            };
+            buttonBIN.Click        += delegate{
+                mode="BIN";
+            };
+            buttonDEC.Click        += delegate{
+                mode="DEC";
+            };
+            buttonHEX.Click        += delegate{
+                mode="HEX";
             };
            
            

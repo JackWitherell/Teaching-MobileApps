@@ -206,7 +206,8 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:textStyle="italic" />
             <Button
                 android:text="B"
                 android:layout_marginTop="-5dp"
@@ -218,7 +219,8 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:textStyle="italic" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow3"
@@ -284,7 +286,8 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:textStyle="italic" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow4"
@@ -350,7 +353,8 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:textStyle="italic" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow5"
@@ -403,8 +407,7 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:textStyle="italic" />
+                android:ems="10" />
             <Button
                 android:text="="
                 android:layout_marginTop="-5dp"
