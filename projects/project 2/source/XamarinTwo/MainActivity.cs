@@ -14,6 +14,8 @@ namespace XamarinTwo{
     [Activity(Label = "XamarinTwo", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity{
         private ImageView _imageView;
+        int height;
+        int width;
         protected override void OnCreate(Bundle savedInstanceState){
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
@@ -24,6 +26,8 @@ namespace XamarinTwo{
                 _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
                 button.Click += TakeAPicture;
             }
+            Button secondButton= FindViewById<Button>(Resource.Id.mySecondButton);
+            secondButton.Click+= delegate{EditAndApplyImage(width,height);};
             // Get our button from the layout resource,
             // and attach an event to it
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
@@ -57,14 +61,22 @@ namespace XamarinTwo{
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume to much memory
             // and cause the application to crash.
-            int height = Resources.DisplayMetrics.HeightPixels;
-            int width = _imageView.Height;
+            height = Resources.DisplayMetrics.HeightPixels;
+            width = _imageView.Height;
             App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
             if (App.bitmap != null){
                 _imageView.SetImageBitmap(App.bitmap);
                 App.bitmap = null;
             }
             GC.Collect(); //remove java's bitmap
+        }
+        private void EditAndApplyImage(int width, int height){
+            App.bitmap = App._file.Path.EditedBitmap(width, height);
+            if(App.bitmap != null){
+                _imageView.SetImageBitmap(App.bitmap);
+                App.bitmap=null;
+            }
+            GC.Collect();
         }
     }
 }
@@ -74,6 +86,16 @@ public static class App{
     public static Bitmap bitmap;
 }
 public static class BitmapHelpers{
+    public static Bitmap EditedBitmap(this string fileName, int width, int height){
+        Bitmap different=App._file.Path.LoadAndResizeBitmap(width,height);
+        Bitmap abfusque=different.Copy(Bitmap.Config.Argb8888, true);
+        for (int x=0;x<100;x++){
+            for(int y=0;y<100;y++){
+                abfusque.SetPixel(x,y,Color.Argb(255,55,55,55));
+            }
+        }
+        return abfusque;
+    }
     public static Bitmap LoadAndResizeBitmap(this string fileName, int width, int height){
         // First we get the the dimensions of the file on disk
         BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
