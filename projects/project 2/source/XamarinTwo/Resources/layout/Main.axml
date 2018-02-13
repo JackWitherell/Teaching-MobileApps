@@ -14,4 +14,9 @@
         android:layout_height="300.0dp"
         android:id="@+id/imageView1"
         android:adjustViewBounds="true" />
+    <Button
+        android:text="BlueLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mySecondButton" />
 </LinearLayout>
