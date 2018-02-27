@@ -8,7 +8,6 @@ using Android.Provider;
 using System.Collections.Generic;
 using Android.Content.PM;
 using System;
-using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 namespace XamarinThree
 {
