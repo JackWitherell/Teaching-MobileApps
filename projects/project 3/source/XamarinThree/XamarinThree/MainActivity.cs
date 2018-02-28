@@ -9,15 +9,31 @@ using System.Collections.Generic;
 using Android.Content.PM;
 using System;
 using Uri = Android.Net.Uri;
-namespace XamarinThree
-{
-    [Activity(Label = "XamarinThree", MainLauncher = true, Icon = "@mipmap/icon")]public class MainActivity : Activity{
+namespace XamarinThree{
+    [Activity(Label = "Cloud Cam", MainLauncher = true, Icon = "@mipmap/icon")]public class MainActivity : Activity{
         private ImageView _imageView;
         int height;
         int width;
+        TextView [] text = new TextView[10];
+        List<string> words = new List<string>();
+
         protected override void OnCreate(Bundle savedInstanceState){
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
+            
+            text[0] = FindViewById<TextView>(Resource.Id.textView1);
+            text[1] = FindViewById<TextView>(Resource.Id.textView2);
+            text[2] = FindViewById<TextView>(Resource.Id.textView3);
+            text[3] = FindViewById<TextView>(Resource.Id.textView4);
+            text[4] = FindViewById<TextView>(Resource.Id.textView5);
+            text[5] = FindViewById<TextView>(Resource.Id.textView6);
+            text[6] = FindViewById<TextView>(Resource.Id.textView7);
+            text[7] = FindViewById<TextView>(Resource.Id.textView8);
+            text[8] = FindViewById<TextView>(Resource.Id.textView9);
+            text[9] = FindViewById<TextView>(Resource.Id.textView10);
+
+            setText("");
+
             Button button = FindViewById<Button>(Resource.Id.myButton);
             if (CamActivityExists()){
                 AllocateDirectory();
@@ -28,6 +44,21 @@ namespace XamarinThree
             secondButton.Click+= delegate{height=128; width=128; EditAndApplyImage(width,height,true);};
             Button thirdButton= FindViewById<Button>(Resource.Id.myThirdButton);
             thirdButton.Click+= delegate{height=128; width=128; EditAndApplyImage(width,height,false);};
+            Button cloudApi= FindViewById<Button>(Resource.Id.CloudApiButton);
+            cloudApi.Click+= delegate{words.Clear();apiwork(App._file.Path.LoadAndResizeBitmap(128, 128));setText(words);};
+        }
+        private void setText(String a){
+            text[0].Text = a;
+            text[1].Text= text[2].Text=text[3].Text=text[4].Text=text[5].Text=text[6].Text=
+                text[7].Text=text[8].Text=text[9].Text="";
+        }
+        private void setText(List<string> g){
+            for (int i=0; i<g.Count;i++){
+                text[i].Text=g[i];
+            }
+            for(int i=g.Count;i<10;i++){
+                text[i].Text="";
+            }
         }
         private void AllocateDirectory(){
             App._dir = new File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures),
@@ -36,7 +67,7 @@ namespace XamarinThree
                 App._dir.Mkdirs();
             }
         }
-        private bool CamActivityExists(){
+        private bool CamActivityExists(){ //isthereanapptotakepictures
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             IList<ResolveInfo> availableActivities =
                 PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
@@ -62,6 +93,65 @@ namespace XamarinThree
                 App.bitmap = null;
             }
             GC.Collect();
+        }
+        private void apiwork(Android.Graphics.Bitmap bitmap){
+            string bitmapString = "";
+            using (var stream = new System.IO.MemoryStream())
+            {
+                bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
+
+                var bytes = stream.ToArray();
+                bitmapString = System.Convert.ToBase64String(bytes);
+            }
+
+            //credential is stored in "assets" folder
+            string credPath = "google_api.json";
+            Google.Apis.Auth.OAuth2.GoogleCredential cred;
+
+            //Load credentials into object form
+            using (var stream = Assets.Open(credPath))
+            {
+                cred = Google.Apis.Auth.OAuth2.GoogleCredential.FromStream(stream);
+            }
+            cred = cred.CreateScoped(Google.Apis.Vision.v1.VisionService.Scope.CloudPlatform);
+
+            // By default, the library client will authenticate 
+            // using the service account file (created in the Google Developers 
+            // Console) specified by the GOOGLE_APPLICATION_CREDENTIALS 
+            // environment variable. We are specifying our own credentials via json file.
+            var client = new Google.Apis.Vision.v1.VisionService(new Google.Apis.Services.BaseClientService.Initializer()
+            {
+                ApplicationName = "subtle-isotope-190917",
+                HttpClientInitializer = cred
+            });
+
+            //set up request
+            var request = new Google.Apis.Vision.v1.Data.AnnotateImageRequest();
+            request.Image = new Google.Apis.Vision.v1.Data.Image();
+            request.Image.Content = bitmapString;
+
+            //tell google that we want to perform label detection
+            request.Features = new List<Google.Apis.Vision.v1.Data.Feature>();
+            request.Features.Add(new Google.Apis.Vision.v1.Data.Feature() { Type = "LABEL_DETECTION" });
+            var batch = new Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest();
+            batch.Requests = new List<Google.Apis.Vision.v1.Data.AnnotateImageRequest>();
+            batch.Requests.Add(request);
+
+            //send request.  Note that I'm calling execute() here, but you might want to use
+            //ExecuteAsync instead
+            var apiResult = client.Images.Annotate(batch).Execute();
+
+            if (bitmap != null)
+            {
+                _imageView.SetImageBitmap(bitmap);
+                _imageView.Visibility = Android.Views.ViewStates.Visible;
+                bitmap = null;
+            }
+
+            foreach (var item in apiResult.Responses[0].LabelAnnotations){
+                words.Add(item.Description);
+            }
+            System.GC.Collect();
         }
         private void EditAndApplyImage(int width, int height, bool a){
             if(a){
