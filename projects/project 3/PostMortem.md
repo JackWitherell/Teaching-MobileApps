@@ -1,11 +1,13 @@
 # Post Mortem
-Use this page to discuss what you learned from completing this assignment.  It should be completed **after** you finish coding your assignment. Your post mortem must be at least 500 words long.  Note that the focus of the paper should be on your reflection, not on structure (e.g. introductory paragraph, conclusion, etc.).  The essay is graded on content (i.e. it shows deep though) rather than syntax (e.g. spelling) and structure.  
 
-Below are some prompts that can be used to get you thinking.  Feel free to use these or to make up your own.
-* Describe a particular struggle that you overcame when working on this programming assignment.
-* Conversely, describe an issue with your assignment that you were unable to resolve.
-* Provide advice to a future student on how he or she might succeed on this assignment.
-* Describe the most fun aspect of the assignment.
-* Describe the most challenging aspect of the assignment.
-* Describe the most difficult aspect of the assignment to understand.
-* Provide any suggestions for improving the assignment in the future.
+I didn't like the structure or the feel of this project at all. It seemed really straightforward at first; use a google api, specifically the cloud vision api somewhere in your app. I thought that this was rather a limited use ai and I feel like there are a lot of candidates for api's, plugins and utilities that could have been more useful. Regardless, I went along with it but there were only so many things I could do with this bit of a software extension. I learned a little bit about security with the json keys but the project seemed so limited. I tried utilizing the API in nonstandard ways.
+
+When I was going through working with the API keys I had moved everything into place where I knew that I would need it. After making a commit, I realized I had the folders for my project were situated incorrectly. After moving these, my gitignore settings had been wiped and my key was leaked. This was a simple example of one of the learning experiences I went through getting this project off the ground.
+
+I first tried making a frame which would update the image view with the actual camera image periodically and then every so often send an image to google's servers and get the list. I couldn't get this code to work at all because I couldn't crack through the event handling mechanisms to get it to 'update every so often'.
+
+My next attempt was to work through just simply listing the details of the result output. This was successful and ended up sufficing for the duration of the project. I had problems dealing with the API due to the autocomplete not listing the results I ended up wanting to use 90% of the time.
+
+I'd say that the most difficult part of using these external api's is the fact that they're often used in different ways. Due to the nature of this, the within them isn't neatly wrapped in a simple abstraction layer, and to bake your inputs and outputs into a position where they are usable takes time. I thought it would have made more sense in these cases to build api use like a pipeline, where helper functions facilitate the movements in and out of the code, but the fact that the cases you might use the code in differ greatly causes you to increase the amount of things you need to input and pass through and modify output for coming out of the api. It's difficult to use these as modular program pieces when there are so many individual units on each end that have to be carefully chained through in order to make things work seamlessly.
+
+It is also very difficult to carry through with a new design for every case that you might find yourself using a different piece of code that you already wrote. It gets to the point where even if the codebase of your project is almost identical to old code, you're better off rewriting major parts of it due to how things differ from the last time you used it to this time. It almost makes sense to write code in a way you're going to use it presently and not for long term reusability.
