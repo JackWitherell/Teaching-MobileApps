@@ -1,0 +1,26 @@
+for PA4 I implemented a better system for editing the image in the imagesystem of PA2. I also implemented an imagebrowser so an image doesn't need to be taken each time the app is launched.
+
+Instead of using GetPixel() and SetPixel() I pulled the array of values out of the bitmap into an integer array, split them up, edited them back in and loaded the pixels back into the bitmap. In doing so, I kept amount of data locks down to a minimum and it ended up using much less time. Before, LogCat would report that the process of running the conversion would use 160-166 frames on average and now it only uses between 72-76 frames for a typical image.
+I've proven that using other libraries and techniques can cut down the time to a little less than a few milliseconds in some cases so I know it's possible to cut down this time even more, but not having to put a lock and unlock each time I want to load a pixel is very beneficial.
+
+I was also able to implement getting an image from the gallery using an intent. Now all image importing functionality is supported (short of sharing an image into the app), between taking a picture, loading it from a file browser.
+
+There were a few complex parts as to how I was able to implement these things such as how the image data is pulled from the browsing intent compared to taking an image from the camera intent. I learned a few new things there. Converting a pixel from int to rgb values wasn't too difficult from my experience with bit manipulation and I was able to render it down to a static class that maintained a working pixel object.
+
+public static class Pixl{
+    public static int r;
+    public static int g;
+    public static int b;
+    public static void loadPixel(int val){
+        r=(val>>16)&0xFF;
+        g=(val>>8)&0xFF;
+        b=val&0xFF;
+    }
+    public static void addErr(int err){
+        r=(r+err)>255?255:(r+err)<0?0:(Pixl.r+err);
+        g=(g+err)>255?255:(g+err)<0?0:(Pixl.g+err);
+        r=(b+err)>255?255:(b+err)<0?0:(Pixl.b+err);
+    }
+}
+
+I regret losing my original work on it but redoing the stuff has helped solidify its place in my memory and I was able to make much cleaner code. I should try 'losing my code' more often (in order to give some new concept a quick rework and to clean stuff up.

@@ -9,6 +9,12 @@
         android:layout_height="wrap_content"
         android:text="@string/openCamera"
         android:textStyle="italic" />
+    <Button
+        android:id="@+id/choosePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choosePhoto"
+        android:textStyle="italic" />
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="fill_parent"

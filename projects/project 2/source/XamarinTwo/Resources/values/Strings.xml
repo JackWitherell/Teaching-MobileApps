@@ -3,4 +3,5 @@
   <string name="hello">Hello World, Click Me!</string>
   <string name="app_name">Bitty Cam</string>
   <string name="openCamera">Open Camera</string>
+  <string name="choosePhoto">Choose Photo</string>
 </resources>
