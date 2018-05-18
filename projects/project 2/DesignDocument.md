@@ -1,6 +1,5 @@
 ## Bitty Cam
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
 Bitty Cam is an android powered image effects application that allows you take a picture and apply one of two filters onto it. I wrote it with this GameBoy filter I wrote in another language as a winter break project because I wanted to have the ability to use this filter on the go. The other filter I used was found (stumbled upon) by accident. Just a happy little accident I guess.
 
